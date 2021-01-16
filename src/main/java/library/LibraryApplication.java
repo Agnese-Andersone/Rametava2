@@ -1,0 +1,25 @@
+package library;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import library.configuration.DbSessionHolder;
+
+public class LibraryApplication extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent rootScene = FXMLLoader.load(getClass().getResource("/ui/main/main.fxml"));
+        primaryStage.setTitle("Rametava");
+        primaryStage.setScene(new Scene(rootScene));
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        DbSessionHolder.getInstance();
+        launch(args);
+        DbSessionHolder.shutdown();
+    }
+}
